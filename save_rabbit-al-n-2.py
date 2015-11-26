@@ -19,7 +19,7 @@ __author__ = 'shengwen'
 # ==========
 #
 # Inputs:
-food = 3
+food = 7
 grid = [[0, 2, 5], [1, 1, 3], [2, 1, 1]]
 # Output:
 #     (int) 0
