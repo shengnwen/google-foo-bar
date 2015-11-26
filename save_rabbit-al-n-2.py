@@ -19,7 +19,7 @@ __author__ = 'shengwen'
 # ==========
 #
 # Inputs:
-food = 7
+food = 3
 grid = [[0, 2, 5], [1, 1, 3], [2, 1, 1]]
 # Output:
 #     (int) 0
@@ -110,6 +110,8 @@ def answer(food, grid):
             for id in xrange(square, -1, -1):
                 if id == square:
                     range_grid[id][0] = grid[square][id] + min(range_grid[id][0], range_grid[id + N][0])
+                    if range_grid[id][0] > food:
+                        return -1
                     range_grid[id][1] = grid[square][id] + max(range_grid[id][1], range_grid[id + N][1])
                     range_grid[id + N] = [i for i in range_grid[id]]
                 else:
@@ -117,6 +119,8 @@ def answer(food, grid):
                     range_grid[id][1] = grid[square][id] + max(range_grid[id][1], range_grid[id + 1][1])
                     range_grid[id + N][0] = grid[id][square] + min(range_grid[id + N][0], range_grid[id][0])
                     range_grid[id + N][1] = grid[id][square] + max(range_grid[id + N][1], range_grid[id][1])
+                    if min(range_grid[id][0], range_grid[id + N][0]) > food:
+                        return -1
             print range_grid
     if food < range_grid[0][0]:
         return -1
@@ -125,5 +129,8 @@ def answer(food, grid):
     else:
         return 0
 
+# def findMin(grid):
+#     N = len(grid)
+#     for i in
 print answer(food,grid)
 
